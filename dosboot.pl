@@ -9,7 +9,7 @@ use Getopt::Long;
 
 #Version Number
 #--------------
-my $vnum = "0.2.3";
+my $vnum = "0.2.31";
 #--------------
 
 #Configuration Variables
@@ -72,6 +72,10 @@ unless(-d "$confpath"){
 unless(-e "$confpath/$whitelist" && $genwl==0){
 	print "Generating whitelist\n";
 	genwhitelist();
+	if($genwl != 0){
+		print "Generated new whitelist\n";
+		exit;
+	}
 }
 
 #Attempt to detect APF or CSF, fall back on iptables if necessary
