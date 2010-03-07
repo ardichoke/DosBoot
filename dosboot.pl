@@ -9,7 +9,7 @@ use Getopt::Long;
 
 #Version Number
 #--------------
-my $vnum = "0.2.31";
+my $vnum = "0.2.31d1";
 #--------------
 
 #Configuration Variables
@@ -217,7 +217,7 @@ sub checkban {
 				if ($totban > $maxban && $uban == 1){
 					print "Removing $BANLIST[$banpos] from firewall.\n";
 					unban ($BANLIST[$banpos]); $BANLIST[$banpos]="$ip";
-					$banpos = ($banpos +1) % $maxban;
+					$banpos = ($banpos + 1) % $maxban;
 					$totban++;
 				}
 				else{
@@ -256,6 +256,12 @@ sub unban ($){
 	my $rc = system("$PREUBAN $ip $POSTUBAN");
 	if($rc != 0){
 		print "Unbanning IP failed, bugging out.\n";
+
+		if($debug != 0){print "DEBUG INFO:
+	UBAN IP = $ip
+	totban = $totban
+	banpos = $banpos\n";}
+		
 		exit $rc;
 	}
 }
