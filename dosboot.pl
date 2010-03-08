@@ -9,7 +9,7 @@ use Getopt::Long;
 
 #Version Number
 #--------------
-my $vnum = "0.2.31d1";
+my $vnum = "0.2.32";
 #--------------
 
 #Configuration Variables
@@ -213,18 +213,15 @@ sub help{
 sub checkban {
 	foreach my $ip (sort keys %CONINFO) {
 		if ($CONINFO{$ip} >= $maxconn){
-			unless ( grep ( /$ip$/,@BANLIST ) > 0 || grep ( /$ip/,@WHITELIST ) > 0 ){
-				if ($totban > $maxban && $uban == 1){
+			unless ( grep ( /$ip$/,@BANLIST ) > 0 || grep ( /$ip$/,@WHITELIST ) > 0 ){
+				if ($totban >= $maxban && $uban == 1){
 					print "Removing $BANLIST[$banpos] from firewall.\n";
 					unban ($BANLIST[$banpos]); $BANLIST[$banpos]="$ip";
-					$banpos = ($banpos + 1) % $maxban;
-					$totban++;
-				}
-				else{
-					$BANLIST[$banpos]="$ip"; $banpos++; $totban++;
 				}
 				print "Blocking $ip with $CONINFO{$ip} connections.\n";
 				doban ($ip);
+				$banpos = ($banpos + 1) % $maxban;
+				$totban++;
 			}
 		}
 	}
@@ -260,7 +257,8 @@ sub unban ($){
 		if($debug != 0){print "DEBUG INFO:
 	UBAN IP = $ip
 	totban = $totban
-	banpos = $banpos\n";}
+	banpos = $banpos
+	maxban = $maxban\n";}
 		
 		exit $rc;
 	}
