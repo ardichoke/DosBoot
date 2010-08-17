@@ -7,11 +7,6 @@
 use strict;
 use Getopt::Long;
 
-#Version Number
-#--------------
-my $vnum = "0.3.0";
-#--------------
-
 #Configuration Variables
 #-----------------------
 my $stime = 30;
@@ -22,6 +17,11 @@ my $maxban = 500;
 #---------------------------------------------
 # There is no need to edit anything past this.
 #---------------------------------------------
+
+#Version Number
+#--------------
+my $vnum = "0.3.0";
+#--------------
 
 # Define subroutines
 sub search;
