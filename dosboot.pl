@@ -20,7 +20,7 @@ my $maxban = 500;
 
 #Version Number
 #--------------
-my $vnum = "0.3.0";
+my $vnum = "0.3.1";
 #--------------
 
 # Define subroutines
@@ -91,6 +91,9 @@ if (system("apf > /dev/null 2>&1") == 0){
 }elsif(system("csf > /dev/null 2>&1") == 0){
 	$PREBAN = "csf -d";
 	$POSTBAN = "";
+        $PREUBAN = "csf -dr";
+        $POSTUBAN = "";
+        $uban = 1;
 	print "Using csf to ban IPs\n";
 }else{
 	$PREBAN = "/sbin/iptables -I INPUT -s";

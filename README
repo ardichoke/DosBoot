@@ -15,6 +15,5 @@ Options:
 --list,-l	Print out list of connected IPs and the number of open connections
 
 --maxban=n	Maximum number of IPs to ban before removing old bans
-	Currently only works with apf
 
 --maxcon=n	Maximum number of connections before banning IP
