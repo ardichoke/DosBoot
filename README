@@ -1,19 +1,7 @@
+A collection of scripts that may or may not be useful in the future.
+
 DosBoot is a perl script meant to detect and block the sources of a DoS attack.
-It will use either apf, csf or iptables (in that order of preference) to block
-the attack IPs.
 
-
-Usage:  dosboot.pl OPTIONS
-
-Options:
-
---genwhitelist,-g	Regenerate the automatic whitelist
-	CAUTION: This will overwrite the current whitelist
-
---help,-h	Print this helpful help message
-
---list,-l	Print out list of connected IPs and the number of open connections
-
---maxban=n	Maximum number of IPs to ban before removing old bans
-
---maxcon=n	Maximum number of connections before banning IP
+setup_home.sh will create a symlink in your home directory pointing to each file
+in the specified directory (defaults to ~/homeconfig). This is meant to ease setup
+of dotfiles which are stored in a git repository.
